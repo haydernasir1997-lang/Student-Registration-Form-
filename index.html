@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Registration System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <div class="page-wrapper">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">EduRegister</span>
+      </div>
+      <nav class="header-nav">
+        <button class="nav-btn active" onclick="showSection('form-section')">Register</button>
+        <button class="nav-btn" onclick="showSection('records-section')">Records</button>
+      </nav>
+    </header>
+
+    <!-- REGISTRATION FORM SECTION -->
+    <section id="form-section" class="content-section active">
+      <div class="form-container">
+        <div class="form-header">
+          <h1 class="form-title">Student <span class="accent">Registration</span></h1>
+          <p class="form-subtitle">Fill in the details below to register a new student.</p>
+        </div>
+
+        <form id="registrationForm" novalidate>
+
+          <div class="form-grid">
+
+            <!-- Personal Info -->
+            <div class="form-group">
+              <label for="firstName">First Name <span class="required">*</span></label>
+              <input type="text" id="firstName" name="firstName" placeholder="e.g. Abebe" />
+              <span class="error-msg" id="err-firstName"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="lastName">Last Name <span class="required">*</span></label>
+              <input type="text" id="lastName" name="lastName" placeholder="e.g. Girma" />
+              <span class="error-msg" id="err-lastName"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="studentId">Student ID <span class="required">*</span></label>
+              <input type="text" id="studentId" name="studentId" placeholder="e.g. STU-2024-001" />
+              <span class="error-msg" id="err-studentId"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="dob">Date of Birth <span class="required">*</span></label>
+              <input type="date" id="dob" name="dob" />
+              <span class="error-msg" id="err-dob"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Gender <span class="required">*</span></label>
+              <select id="gender" name="gender">
+                <option value="">— Select —</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-binary">Non-binary</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+              <span class="error-msg" id="err-gender"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="student@example.com" />
+              <span class="error-msg" id="err-email"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+251 9XX XXX XXXX" />
+              <span class="error-msg" id="err-phone"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="nationality">Nationality</label>
+              <input type="text" id="nationality" name="nationality" placeholder="e.g. Ethiopian" />
+            </div>
+
+            <!-- Academic Info -->
+            <div class="form-group full-width section-break">
+              <h3 class="section-label">Academic Information</h3>
+            </div>
+
+            <div class="form-group">
+              <label for="department">Department <span class="required">*</span></label>
+              <select id="department" name="department">
+                <option value="">— Select —</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Business">Business Administration</option>
+                <option value="Medicine">Medicine</option>
+                <option value="Law">Law</option>
+                <option value="Arts">Arts & Humanities</option>
+                <option value="Education">Education</option>
+              </select>
+              <span class="error-msg" id="err-department"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="year">Year of Study <span class="required">*</span></label>
+              <select id="year" name="year">
+                <option value="">— Select —</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+                <option value="5th Year">5th Year</option>
+                <option value="Postgraduate">Postgraduate</option>
+              </select>
+              <span class="error-msg" id="err-year"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="enrollDate">Enrollment Date <span class="required">*</span></label>
+              <input type="date" id="enrollDate" name="enrollDate" />
+              <span class="error-msg" id="err-enrollDate"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="status">Student Status</label>
+              <select id="status" name="status">
+                <option value="Active">Active</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Exchange">Exchange</option>
+                <option value="Deferred">Deferred</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="address">Home Address</label>
+              <textarea id="address" name="address" rows="3" placeholder="Street, City, Region..."></textarea>
+            </div>
+
+          </div><!-- /.form-grid -->
+
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" onclick="resetForm()">Clear</button>
+            <button type="submit" class="btn-primary" id="submitBtn">
+              <span class="btn-label">Register Student</span>
+              <span class="btn-icon">→</span>
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- RECORDS SECTION -->
+    <section id="records-section" class="content-section">
+      <div class="records-container">
+        <div class="records-header">
+          <h2 class="form-title">Student <span class="accent">Records</span></h2>
+          <div class="records-controls">
+            <input type="text" id="searchInput" placeholder="🔍  Search name, ID, department..." oninput="filterRecords()" />
+            <button class="btn-danger" onclick="clearAllRecords()">Clear All</button>
+          </div>
+        </div>
+
+        <div id="recordsCount" class="records-count">No students registered yet.</div>
+
+        <div class="table-wrapper">
+          <table id="recordsTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Student ID</th>
+                <th>Full Name</th>
+                <th>Department</th>
+                <th>Year</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="recordsBody">
+              <!-- Rows injected by JS -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- /.page-wrapper -->
+
+  <!-- SUCCESS TOAST -->
+  <div id="toast" class="toast hidden">
+    <span class="toast-icon">✓</span>
+    <span id="toast-msg">Student registered successfully!</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
